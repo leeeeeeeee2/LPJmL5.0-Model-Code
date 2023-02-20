@@ -1,0 +1,62 @@
+##### Settings for lpjml_benchmark.r #####
+
+# General settings ####
+start_year <- 1901        # startyear of data
+benchmark_ts <- 2004:2006 #1991:2000 # reference years for comparison - former "refyears"
+input_files <- c("vegc.bin","soilc.bin","litc.bin","pft_harvest.pft.bin",
+                 "cftfrac.bin","firec.bin","flux_estab.bin","fpc.bin",
+                 "mnpp.bin","mrh.bin","mevap.bin","mtransp.bin",
+                 "minterc.bin","mrunoff.bin","vegn.bin","soiln.bin", "mbnf.bin","mn_immo.bin","mn_mineralization.bin","mn_volatilization.bin","mn2_emis.bin","mn2o_denit.bin","mn2o_nit.bin","mleaching.bin")
+landuse <- TRUE # should landuse data be included? - former "isnatural <- 0"
+cfts <- c("tece","rice","maize","soybean") # select cfts to be benchmarked
+
+# Measures ####
+# measures beeing used
+global_sums_ts <- T # turn on/off (TRUE/FALSE) feature to plot global sums timeseries of output (see also long_ts for time span specification)
+mapplots <- T # turn on/off (TRUE/FALSE) feature to plot mean plots of benchmark_ts (see also map_measure for specification of measure)
+fluxes <-  c()#c("nep","et")  # nep, et, runoff (net ecosystem production, evapotranspiration, runoff/discharge)
+
+# measure specification
+map_measure <- "Difference" #"Absolute value" # decide wether to plot differences between benchmark and your output or to plot absolute values of your output
+benchmark_extent <- extent(-180,180,-56,84) # change if you want to focus on more regional pattern in map plots (mapplots=TRUE)
+long_ts <- T    # decide wether whole timseries should be used (TRUE) or the just benchmark_ts (FALSE)
+
+# Meta-information ####
+#reportdirectory <- "/p/projects/macmit/users/herzfeld/tillage_lpj/historical_new_inputs/benchmark_pdfs/"   # location where pdf is saved
+#reportdirectory <- "/p/projects/macmit/users/herzfeld/tillage_lpj/historical_new_inputs/macmit_nitrogen_tillage/benchmark_pdfs/"
+reportdirectory <- "/p/projects/macmit/users/herzfeld/macmit_tillage_carbon_study/postprocessing/benchmark_pdfs/"
+reportname <- ""        # pdf output file
+reportfile <- "_HIST_run_newintputs_POT_IRRI_vs_6_output_others_to_crop_2004_2006.pdf" # ".docx"
+description <- ""   # description within pdf output
+author <- "herzfeld"        # author named on pdf output
+
+# Output run ####
+#path.out <- "/p/projects/macmit/users/herzfeld/tillage_lpj/historical_new_inputs/benchmark_rev5207/" # path of output you want to benchmark
+#path.out <- "/p/projects/macmit/users/herzfeld/tillage_lpj/historical_new_inputs/macmit_nitrogen_tillage/2_output_TILLAGE_READRES_GGCMIFERT_NOMANURE_LU32/"
+path.out <- "/p/projects/macmit/users/herzfeld/macmit_tillage_carbon_study/hist_runs/OUTPUT/OUTPUT_T_R/"
+res.out <- 0.5 # grid resolution of new run (in degree)
+
+# Benchmark run ####
+#path.b <- "/p/projects/macmit/users/herzfeld/tillage_lpj/historical_new_inputs/benchmark_rev5207_3/" # path of benchmark outputs
+path.b <- "/p/projects/macmit/users/herzfeld/tillage_lpj/historical_new_inputs/macmit_nitrogen_tillage/6_output_READTILLAGE_READRES_NEWFERT_MANURE_NEWLU_others_to_crop/"
+res.b <- 0.5 # grid resolution of benchmark run (in degree)
+
+# Eddy Flux data ####
+
+# Net Ecosystem Production
+flux_path.nep <- "/p/projects/open/sibyll/valid/nee/nep.csv"
+flux_description.nep <- "Euroflux/Ameriflux Data"
+
+# Evapotranspiration fluxes
+flux_path.et <- "/p/projects/open/sibyll/valid/evapotr/tpi.csv"
+flux_description.et <- "Euroflux/Ameriflux Data"
+
+# Runoff/Discharge
+flux_path.runoff <- ""
+dis.description <- ""
+
+# do not touch ####
+if(reportdirectory=="") reportdirectory <- paste0(getwd(),"/")
+if(reportname=="") reportname <- paste0("lpj_benchmark_",Sys.info()[7],"_",Sys.Date())
+if(description=="") description <- paste0("LPJ Benchmark ",Sys.Date())
+if(author=="") author <- toupper(Sys.info()[7])
