@@ -1,0 +1,41 @@
+.TH getlanduse 3  "January 9, 2013" "version 5.1.001" "LPJmL programmers manual"
+.SH NAME
+getlanduse \- Get land use data
+.SH SYNOPSIS
+.nf
+\fB#include "lpj.h"
+
+Bool getlanduse(Landuse \fIlanduse\fB,Cell \fIgrid[]\fB,int \fIyear\fB,int \fIncft\fB,const Config *\fIconfig\fB);\fP
+
+.fi
+.SH DESCRIPTION
+Function reads land use data for specified year.
+The arguments of \fBgetlanduse\fP are:
+.TP
+.I landuse
+Pointer to land use data.  Must be initialized by \fBinitlanduse()\fP.
+.TP
+.I grid
+Cell grid array allocated and initialized by \fBnewgrid()\fP.
+.TP
+.I year
+Sets year land use is read.
+.TP
+.I ncft
+Number of crop plant functional types.
+.TP
+.I config
+LPJmL configuration data. Must be read by \fBreadconfig()\fP.
+.SH RETURN VALUE
+Upon successful completion FALSE is returned and TRUE on error.
+
+.SH AUTHORS
+
+For authors and contributors see AUTHORS file
+
+.SH COPYRIGHT
+
+(C) Potsdam Institute for Climate Impact Research (PIK), see COPYRIGHT file
+
+.SH SEE ALSO
+readconfig(3), initlanduse(3), freelanduse(3)

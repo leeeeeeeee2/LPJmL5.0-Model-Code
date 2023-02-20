@@ -1,0 +1,32 @@
+.TH freelanduse 3  "January 9, 2013" "version 5.1.001" "LPJmL programmers manual"
+.SH NAME
+freelanduse \- Closes file and deallocates land use data
+.SH SYNOPSIS
+.nf
+\fB#include "lpj.h"
+
+void freelanduse(Landuse \fIlanduse\fB,Bool \fIisroot\fB);
+
+.fi
+.SH DESCRIPTION
+Function closes open file and deallocates  land use data.
+The arguments of \fBfreelanduse\fP are:
+.TP
+.I landuse
+Pointer to land use data.  Must be initialized by \fBinitlanduse()\fP.
+.TP
+.I isroot
+Task is root task.
+.SH RETURN VALUE
+None.
+
+.SH AUTHORS
+
+For authors and contributors see AUTHORS file
+
+.SH COPYRIGHT
+
+(C) Potsdam Institute for Climate Impact Research (PIK), see COPYRIGHT file
+
+.SH SEE ALSO
+initlanduse(3), getlanduse(3)
